@@ -1,4 +1,5 @@
 body {
+    font-family: fantasy;
     background-color: #95c6b6;
     color: #0f4d26;
     text-align: center;
@@ -12,14 +13,14 @@ body {
     border-radius: 20px;
 }
 
-.board {
+.boardtable {
     margin: auto;
+    margin-top: 20px;
 }
 
-
 .board td {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: rgb(95, 145, 129);
     border-top: 5px solid #99bcb0;
     border-left: 5px solid #92bcae;
@@ -28,4 +29,13 @@ body {
     outline: 3px solid #325549;
     text-align: center;
     margin: auto;
+}
+
+button{
+    color: #0a381b;
+    background-color:#6fad98 ;
+    outline: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }

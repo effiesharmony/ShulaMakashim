@@ -9,10 +9,29 @@
 <body onload="onInit()">
     <h1>Shula Makashim</h1>
     <div class="board-container">
-        <table class="board">
+        <div class="topbar">
+            <!-- <span class="flags"></span> -->
+            <span class="lives"></span>
+            <button class="smiley" onclick="restart()"></button>
+            <!-- <span class="timer"></span> -->
+        </div>
 
+        <table class="boardtable">
+            <tbody class="board" oncontextmenu="return false">
+            </tbody>
         </table>
+
+        <div class="levels">
+            <button style="font-family: candara;" onclick="renderLevel('beginner')">Beginner</button>
+            <button style="font-family: candara;" onclick="renderLevel('medium')">Medium</button>
+            <button style="font-family: candara;" onclick="renderLevel('expert')">Expert</button>
+        </div>
+
     </div>
+    <footer>
+        <hr color="#578072" />
+        🌻Effie Armony🌻
+    </footer>
     <script src="js/shula.js"></script>
 </body>
 
