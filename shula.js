@@ -214,7 +214,7 @@ function checkIfWin() {
     }
 }
 
-function renderLevel(level) {
+function onRenderLevel(level) {
     gIsFirstClick = true
     gCurrentLevel = level
     gGame.lives = gLevels[level].lives
@@ -237,9 +237,9 @@ function renderSmileyBtn() {
     elSmiley.innerHTML = gSmiley
 }
 
-function restart() {
+function onRestart() {
     gSmiley = '😀'
     renderSmileyBtn()
-    renderLevel(gCurrentLevel)
+    onRenderLevel(gCurrentLevel)
     gGame.isOn = true
 }
