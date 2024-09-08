@@ -72,9 +72,7 @@ function buildBoard(level) {
 function createMines(amount) {
     gMines = []
     for (var i = 0; i < amount; i++) {
-        console.log(amount, i)
         var newMine = gFreeCells.splice(getRandomIntInclusive(0, gFreeCells.length - 1), 1)[0]
-        console.log(newMine)
         newMine.isMine = true
         gMines.push(newMine)
     }
@@ -128,7 +126,6 @@ function onCellClicked(i, j) {
     if (currCell.isMarked) return
     if (gIsFirstClick) {
         gFreeCells.splice(gFreeCells.indexOf(currCell), 1)
-        console.log('gCurrLevel:', gLevels[gCurrentLevel].MINES)
         createMines(gLevels[gCurrentLevel].MINES)
         gIsFirstClick = false
     }
@@ -190,25 +187,31 @@ function checkIfLose(i, j) {
     }
 }
 
-function checkMinesForWin() {
-    for (var i = 0; i < gMines.length; i++) {
-        if (gMines[i].isMarked || gMines[i].isShown) {
-            if (i === gMines.length - 1) return true
+function checkFreeCellsForWin(){
+    for (var i = 0; i < gFreeCells.length; i++) {
+        if (!gFreeCells[i].isShown) {
+            return false
         }
     }
-    return false
+    return true
+}
+
+function checkMinesForWin() {
+    for (var i = 0; i < gMines.length; i++) {
+        if (!(gMines[i].isMarked || gMines[i].isShown)) {
+                return false
+            } 
+        }
+    return true
 }
 
 function checkIfWin() {
     if (!gGame.isOn) return false
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[i].length; j++) {
-            if (!gBoard[i][j].isMine && !gBoard[i][j].isShown || !checkMinesForWin()) return
-        }
-    }
+    if(checkFreeCellsForWin() && checkMinesForWin()) {
     gSmiley = '🏆'
     renderSmileyBtn()
     gGame.isOn = false
+    }
 }
 
 function renderLevel(level) {
